@@ -144,9 +144,9 @@ JOBS := $(if $(shell [ -f /proc/cpuinfo ] && head /proc/cpuinfo),\
 DPDK_CPU_CFLAGS := -pie -fPIC
 
 ifeq ($(DPDK_DEBUG),n)
-DPDK_EXTRA_CFLAGS := -g -mtune=$(DPDK_TUNE)
+DPDK_EXTRA_CFLAGS := -g -mtune=$(DPDK_TUNE) -Wimplicit-fallthrough=0
 else
-DPDK_EXTRA_CFLAGS := -g -O0
+DPDK_EXTRA_CFLAGS := -g -O0 -Wimplicit-fallthrough=0
 endif
 
 DPDK_MAKE_EXTRA_ARGS += AESNI_MULTI_BUFFER_LIB_PATH=$(AESNIMB_LIB_SOURCE)
